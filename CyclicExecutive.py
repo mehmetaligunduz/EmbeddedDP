@@ -1,13 +1,13 @@
 import time
+import schedule
 
 class CyclicExecutivePattern:
 
-    def __init__(self, code, code2):
+    def __init__(self, *code):
         self.code = code
-        self.code2 = code2
+        for i in range(0, len(code), 2):
+            schedule.every(code[i+1]).seconds.do(code[i])
 
     def exec(self):
         while True:
-            print(self.code() + "\t" +  time.ctime())
-            print(str(self.code2()) + "\t" +  time.ctime())
-            time.sleep(1)
+            schedule.run_pending()

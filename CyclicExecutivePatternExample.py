@@ -1,20 +1,14 @@
-import random
 from CyclicExecutive import CyclicExecutivePattern
 
-def fasten_seat_belt_buzzer():
-    randx = random.randint(0,2)
-    if randx == 0:
-        return "True"
-    return "False"
+def task_1():
+    print("t_1")
 
-def speedometer():
-    return random.randint(0,120)
+def task_2():
+    print("t_2")
 
-p1 = CyclicExecutivePattern(fasten_seat_belt_buzzer, speedometer)
+p1 = CyclicExecutivePattern(task_1, 2, task_2, 4)
 
 try:
     x = p1.exec()
 except Exception as e:
     print(e)
-else:
-    print(x)
